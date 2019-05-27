@@ -1,0 +1,97 @@
+{% extends "baseone.html"  %}
+{% block title %}分页{% endblock %}
+
+{% block popover-content %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<script type="text/javascript">
+function comment_send(){
+var xmlhttp;
+if (window.XMLHttpRequest) {
+    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+    xmlhttp = new XMLHttpRequest();
+                  }
+     else {
+                      // IE6, IE5 浏览器执行代码
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+     xmlhttp.onreadystatechange=function() {
+         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+             var flag = xmlhttp.responseText;
+             var realflag = JSON.parse(flag);
+             {#var realflags = JSON.stringify(realflag);#}
+             if (realflag["flag"] === "false") {
+                 document.getElementById("comment_js").style.color = "red";
+                 document.getElementById("comment_js").innerHTML = "请先登录,再评论!"
+             }
+             else
+             {
+                  window.location.reload();
+                   {#刷新页面  #}
+             }
+
+         }
+     };
+
+        var cm_text = document.getElementById("comment_text").value;
+
+        if (cm_text !== "") {
+            xmlhttp.open("POST", "/comment_kk/", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            {#var id = {{ id|safe }};#}
+            {#console.log(typeof ({{ id|safe }}));#}
+            {#console.log({{ id|safe }});#}
+            var strss = "cm_text=" + cm_text+"&flag=send_code&id="+ {{ id|safe }} ;
+               xmlhttp.send(strss);
+            document.getElementById("comment_text").value = "";
+        }
+        else {
+            document.getElementById("comment_js").style.color="red";
+            document.getElementById("comment_js").innerHTML = "填写内容不能为空!"
+        }
+
+
+}
+</script>
+{#    {% csrf_token %}#}
+        <div class="container">
+    <div class="row">
+        <div class="col-sm-0">
+                <header class="text">
+                <h3>{{ post.title }}</h3>
+                    <p>作者:<a href="#"><span class="label label-primary">{{ post.author }}</span></a>标签:<span class="label label-danger">{{ post.category }}</span>发博时间:<a href="#"><span class="label label-warning">{{ post.datatime|date:'Y/m/d' }}</span></a></p>
+                </header>
+                <div class="text">
+                <p class="text-uppercase" >
+                    {{ post.content|safe}}
+                </p>
+                <pre class="pre-scrollable">
+                    {{ post.code }}
+                </pre>
+                </div>
+            <button type="button" class="btn btn-primary btn-lg" onclick=window.open(/raises/)>看完不妨赞助一波</button>
+
+
+        </div>
+        <div >
+            <p id="comment_js"></p>
+                <textarea name="comment_text" id="comment_text" placeholder="登陆后可评论"></textarea>
+                <button id="buttonone"  name="buttonone" class="buttonone" type="button" style="vertical-align:middle" onclick="comment_send()"><span>评论 </span></button>
+           </div>
+
+<div>
+<br>
+    {% for item in comment_hh %}
+<h3><i class="fa fa-address-card"></i>{{ item.user_id }}</h3>
+        <p id="time_check"><span class="label label-primary">created at:{{ item.comment_time|date:'Y/m/d' }}</span></p>
+<div>
+<p id="cotent">{{ item.comment_text|safe }}</p>
+</div>
+<hr>
+{#<input type="button" value="回复" id="repeat_content">#}
+    {% endfor %}
+</div>
+    </div>
+    </div>
+
+{% endblock %}

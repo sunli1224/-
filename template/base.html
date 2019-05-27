@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <title>base</title><meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home/">BBLIKE BLOG</a>
+        </div>
+
+    <ul class="nav navbar-nav">
+
+        <li class="active"><a href="/intro/">编程</a> </li>
+        <li class="active"><a href="/read/">博文</a> </li>
+{#        <li class="active"><a href="/JavaScript/">JavaScript博文</a> </li>#}
+        <li class="active"><a href="/Python/python简介/">Python教程</a> </li>
+        <li class="active"><a href="/answer/">问答</a></li>
+        <li class="active"><a href="/raises/">赞助</a> </li>
+         <li><form class="navbar-form" role="search" action="/search/" method="get">
+            <div class="form-group navbar-left">
+                <input type="text" class="form-control" placeholder="搜博文" name="ss">
+            </div>
+         </form></li>
+        {% if request.session.is_login %}
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ request.session.username }}</a> </li>
+        <li><a href="/layout/">登出</a> </li>
+        {% else %}
+            <li><a href="/register/">注册</a> </li>
+        <li><a href="/login/">登陆</a> </li>
+        {% endif %}
+    </ul>
+    </div>
+</nav>
+
+<div class="popover-content">
+    <div>
+        {% block popover-content %}
+        {% endblock %}
+    </div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom: 0">
+    <ol class="text-left">
+        <li><a href="/home/">BBLIKE BLOOG</a></li>
+        <li>本网站是个大帅比写的</li>
+    </ol>
+    <div class="has-active-menu">
+        <a href="https://twitter.com/" class="tooltip-test" data-toggle="tooltip" title="Follow author on Twitter">
+            <i class="fa fa-twitter-square" style="font-size: 20px"></i>
+        </a>
+        <a href="https://weibo.com/6087210865/profile?rightmod=1&wvr=6&mod=personinfo" class="tooltip-test" data-toggle="tooltip" title="Follow author on Weibo">
+            <i class="fa fa-weibo" style="font-size: 20px"></i>
+        </a>
+        <a href=" https://user.qzone.qq.com/3398536845?ADUIN=919443702&ADSESSION=1545357837&ADTAG=CLIENT.QQ.5587_FriendTip.0&ADPUBNO=26847&source=namecardhoverstar
+" class="tooltip-test" data-toggle="tooltip" title="Follow author on QQ空间">
+            <i class="fa fa-qq" style="font-size: 20px"></i>
+        </a>
+        <a href="/home/"  class="tooltip-text" data-toggle="tooltip" title="Back Home Page">
+            <span class="glyphicon glyphicon-th-large"></span>
+        </a>
+        <script>
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+    </div>
+</div>
+
+</body>
+</html>

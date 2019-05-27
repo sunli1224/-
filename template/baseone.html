@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>base</title><meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load staticfiles %}
+{#     <link href="{% static 'css/register.css' %}" rel="stylesheet">#}
+{#<script src="{% static 'js/register.js' %}"></script>#}
+    <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+    <script type="text/javascript" rel="stylesheet" src="{% static "js/JavaScript.js" %}"></script>
+    <script  type="text/javascript" href="{% static 'js/detail.js' %}" ></script>
+</head>
+
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home/">BBLIKE BLOG</a>
+        </div>
+
+    <ul class="nav navbar-nav">
+
+        <li class="active"><a href="/intro/">编程</a> </li>
+        <li class="active"><a href="/read/">博文</a> </li>
+{#        <li class="active"><a href="/JavaScript/">JavaScript博文</a> </li>#}
+        <li class="active"><a href="/Python/python简介/">Python教程</a> </li>
+        <li class="active"><a href="/answer/">问答</a></li>
+        <li class="active"><a href="/raises/">赞助</a> </li>
+         <li><form class="navbar-form" role="search" action="/search/" method="get">
+            <div class="form-group navbar-left">
+                <input type="text" class="form-control" placeholder="搜博文" name="ss">
+            </div>
+         </form></li>
+        {% if request.session.is_login %}
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ request.session.username }}</a> </li>
+        <li><a href="/layout/">登出</a> </li>
+        {% else %}
+            <li><a href="/register/">注册</a> </li>
+        <li><a href="/login/">登陆</a> </li>
+        {% endif %}
+    </ul>
+    </div>
+</nav>
+
+<div class="popover-content">
+    <div>
+        {% block popover-content %}
+        {% endblock %}
+    </div>
+</div>

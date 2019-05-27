@@ -1,0 +1,58 @@
+{% extends 'baseone.html' %}
+{% load staticfiles %}
+{% block title %}login{% endblock %}
+{% block popover-content %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <body></body>
+{#    <h1 id="bblike">BBLIKE BLOG</h1>#}
+{#    <div class="container">#}
+{#    <div class="col-md-3 col-md-offset-4">#}
+{#        <form class="signupForm" action="/login/" method="post">#}
+{#            {% csrf_token %}#}
+{#            {% if message  %}#}
+{#                <div class="alert alert-warning">{{  message }}</div>#}
+{#            {% endif %}#}
+{#            <h2 class="text-center">欢迎登陆</h2>#}
+{#        <div class="input-group input-lg">#}
+{#            <label  for="username">username</label>#}
+{#            <input id="username" type="text" name="username" class="input-group input-group-lg" placeholder="请填写昵名" onkeyup="user_check()" required="required">#}
+{#        </div>#}
+{#        <div class="input-group input-lg">#}
+{#            <label  for="password">password</label>#}
+{#            <input id="password" type="password" name="password" class="input-group input-group-lg" placeholder="请填写密码" onkeyup="password_check()" required="required">#}
+{#        </div>#}
+{#            <button type="reset" class="btn btn-default pull-left">重置</button>#}
+{#            <button type="submit" class="btn btn-primary pull-right ">登陆</button>#}
+{#        </form>#}
+{#    </div>#}
+{#    </div>#}
+
+    <div id="container">
+    {% csrf_token %}
+        {% if message  %}
+                <div class="alert alert-warning">{{  message }}</div>
+        {% endif %}
+    <div id="i_title">
+        <h2>欢迎登陆</h2>
+    </div>
+    <form action="/login/" method="post">
+    <div id="input_in">
+        <input type="text" placeholder="用户名" id="username" name="username" required="required">
+    </div>
+    <div id="input_pass">
+        <input type="password" placeholder="密码" id="password" name="password" required="required">
+        <span id="font_wj"><a href="/modpass/">忘记密码？</a></span>
+    </div>
+        <div id="font_zc">
+            <a href="/register/">点击此处注册账号</a>
+        </div>
+    <div id="reset">
+    <button type="reset" id="btn_reset">重置</button>
+    </div>
+
+        <div id="login">
+    <button type="submit" id="btn_login">登陆</button>
+    </div>
+    </form>
+</div>
+{% endblock %}

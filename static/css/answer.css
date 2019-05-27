@@ -1,0 +1,18 @@
+#content_for:before
+{
+    font-family: FontAwesome;
+    content: '\f2bb';
+    font-size: 30px;
+}
+strong:after
+{
+    font-family: FontAwesome;
+    content: '\f1fa';
+    color: red;
+    font-size: 20px;
+}
+strong:before
+{
+    font-family: FontAwesome;
+    content: '\f2bb';
+}

@@ -1,0 +1,192 @@
+{% extends 'baseone.html' %}
+{% block title %}留言板{% endblock %}
+{% block popover-content %}
+    {% load staticfiles %}
+    <script type="text/javascript" href="{% static 'js/jquery-1.8.3.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/comment_k.css' %}">
+    <link rel="stylesheet" href="{% static 'css/answer.css' %}">
+<script type="text/javascript" href="{% static 'js/comment_k.js' %}"></script>
+
+    <script type="text/javascript">
+    function comment_ss(){
+var xmlhttp;
+if (window.XMLHttpRequest) {
+    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+    xmlhttp = new XMLHttpRequest();
+                  }
+     else {
+                      // IE6, IE5 浏览器执行代码
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+     xmlhttp.onreadystatechange=function() {
+         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+             var flag = xmlhttp.responseText;
+             var realflag = JSON.parse(flag);
+             if (realflag["flag"] === "false") {
+                 document.getElementById("comment_js").style.color = "red";
+                 document.getElementById("comment_js").innerHTML = "请先登录,再评论!"
+
+             }
+             else
+             {
+                 window.location.reload();
+                  {#刷新页面  #}
+             }
+         }
+     };
+
+        var cm_text = document.getElementById("comment_text_s").value;
+
+        if (cm_text !== "") {
+            xmlhttp.open("POST", "/answer/", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var strss = "cm_text=" + cm_text;
+               xmlhttp.send(strss);
+            document.getElementById("comment_text_s").value = "";
+        }
+        else {
+            document.getElementById("comment_js").style.color="red";
+            document.getElementById("comment_js").innerHTML = "填写内容不能为空!"
+        }
+
+}
+ $(function () { $('#collapseOne').collapse('hide')});
+    </script>
+
+
+
+       <script type="text/javascript">
+    function commet_kk(clicked_id) {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+            var flag = xmlhttp.responseText;
+            var realflag = JSON.parse(flag);
+
+            if (realflag["flag"] === "false") {
+                document.getElementById(real_id+"h5").style.color = "red";
+                document.getElementById(real_id+"h5").innerHTML = "请先登录,再评论!"
+            }
+            else
+            {
+                window.location.reload();
+                 {#刷新页面  #}
+            }
+
+        }
+    };
+    var real_id = clicked_id.slice(0,1);
+    var cm_text = document.getElementById(real_id+"input").value;
+    var usernormal = document.getElementById(real_id+"h3").innerHTML;
+
+    if (cm_text !== "") {
+        xmlhttp.open("POST", "/answer_two/", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var strss = "cm_text=" + cm_text + "&flag=send_code&user_normal=" + usernormal;
+        xmlhttp.send(strss);
+        document.getElementById(real_id+"input").value = "";
+    }
+    else {
+        document.getElementById(real_id+"h5").style.color = "red";
+        document.getElementById(real_id+"h5").innerHTML = "填写内容不能为空!"
+    }
+}
+
+       </script>
+
+
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+<h1>留言板</h1>
+        <hr>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    <h2>作者寄语</h2>
+                    </a>
+                </div>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="text-left">
+                <p class="lead glyphicon-text-color">如果对本网站有什么建议，请在下面留言！</p>
+                <p class="lead glyphicon-text-color">有什么关于学习的问题可以留言，博主和网友都会给你最好的建议和帮助！</p>
+                <p class="lead glyphicon-text-color">本网站是专注于Python的教学和学习的网站</p>
+                <p class="lead glyphicon-text-color">后期会加入更多其他语言的教程，敬请期待！</p>
+                <p class="lead glyphicon-text-color">博文部分也是博主精心制作的，都是博主的心血！</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    <br>
+    </div>
+<div class="col-md-12">
+    <p id="comment_js"></p>
+            <textarea name="comment_text_s" id="comment_text_s" placeholder="登陆后可留言"></textarea>
+</div>
+<div class="col-md-12">
+    <button id="buttonone"  name="buttonone" class="buttonone" type="button" style="vertical-align:middle" onclick="comment_ss()"><span>留言</span></button>
+</div>
+<div class="col-md-12">
+<br>
+    {% for item in all_comment %}
+        <p id="content_for" class="lead">{{ item.user_normal }}</p>
+        <p id="time_check"><span class="label label-danger">created at:{{ item.datatime|date:'Y/m/d' }}</span></p>
+<h3 id="cotent">{{ item.question_content|safe }}</h3>
+<div>
+
+{#        <button onclick="huifu()" id="huifu_btn">回复</button>#}
+<div>
+    <div class="col-xs-8">
+    <input id="comment_text_two" name="comment_text_twos" type="text"  class="form-control" placeholder="登陆后可回复">
+    </div>
+    <button onclick="commet_kk(this.id)" name="button_input" id="button"  type="button" style="vertical-align:middle" class="btn btn-primary btn-sm"><span>回复</span></button>
+<h5 id="comment_js_s" ></h5>
+{#    <a id="shouqi" onclick="shouqi()">收起</a>#}
+</div>
+</div>
+        <div>
+    {% for kk in all_comment_k %}
+        {% if item.user_normal ==  kk.reply_user.user_normal and item.question_content == kk.reply_user.question_content %}
+            <h4><strong>{{ kk.user_normal }}</strong>{{item.user_normal }}</h4>
+        <p id="time_check"><span class="label label-primary">created at:{{ kk.datatime|date:'Y/m/d' }}</span></p>
+        <p id="cotent">{{ kk.reply_content|safe }}</p>
+        {% endif %}
+        {% endfor %}
+       </div>
+<hr>
+    {% endfor %}
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    var  inputs = document.getElementsByName('comment_text_twos');
+    var buttons =  document.getElementsByName('button_input');
+     var ps =  document.getElementsByTagName('h5');
+      var h3s =  document.getElementsByTagName('h3');
+
+
+    for(var i = 0 ; i<= inputs.length-1; i++ )
+    {
+        inputs[i].id = i+"input";
+        buttons[i].id = i+"button";
+        ps[i].id = i+"h5";
+        h3s[i].id = i+"h3";
+    }
+
+</script>
+
+{% endblock %}

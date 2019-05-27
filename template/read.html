@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}read{% endblock %}
+{% block popover-content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <h2>体会感悟</h2>
+            {% if error %}
+               <h2>没有相关文章题目</h2>
+            {% else %}
+            {% for read in read_list  %}
+
+                <header class="text">
+                    <h3><a href="{% url 'detail' id=read.id %}" onclick="">{{ read.title }}</a></h3>
+                    <p>作者:<a href="#"><span class="label label-primary">{{ read.author }}</span></a>标签:<a href="{% url 'tag' tag=read.category %}"><span class="label label-danger">{{ read.category|title }}</span></a>发博时间:<a href="#"><span class="label label-warning">{{ read.datatime|date:'Y/m/d' }}</span></a></p>
+                </header>
+                <div class="text">
+                <p class="text-uppercase" >
+                    {{ read.content|safe|truncatewords:10}}
+                </p>
+                    <a href="{% url "detail" id=read.id %}">Read More>></a>
+                    <p>阅读量:{{ read.num }}</p>
+
+                </div>
+
+            {% endfor %}
+
+      {% if read_list.object_list and read_list.paginator.num_pages > 1 %}
+      <div>
+      <ul class="pager">
+      {% if read_list.has_previous %}
+        <li><a href="?page={{ read_list.previous_page_number }}">上一页</a></li>
+      {% endif %}
+
+      {% if read_list.has_next %}
+        <li><a href="?page={{ read_list.next_page_number }}">下一页</a></li>
+      {% endif %}
+      </ul>
+      </div>
+    {% endif %}
+
+    {% endif %}
+
+            <button type="button" class="btn btn-primary btn-lg" onclick=window.open(/raises/)>看完不妨赞助一波</button>
+        </div>
+
+        <div class="col-sm-2">
+       <h2>关于作者</h2>
+        <img src="/static/images/4.png" class="img-circle" width="60" height="60">
+        <a href="https://weibo.com/6087210865/profile?rightmod=1&wvr=6&mod=personinfo"><h4 align="left">孙力</h4></a>
+        <h5 align="left">安徽 芜湖</h5><img src="/static/images/5.png">
+        <a href="https://weibo.com/6087210865/profile?rightmod=1&wvr=6&mod=personinfo" ><button type="button">请加关注</button></a>
+        <h2>归档</h2>
+        {% for read in read_list %}
+         <h4><a href="{% url 'detail' id=read.id %}">{{ read.title }}</a></h4>
+         <p>发博时间:<a href="#">{{ read.datatime|date:'Y/m/d' }}</a></p>
+         <hr>
+        {% endfor %}
+    </div>
+    </div>
+    </div>
+{% endblock %}

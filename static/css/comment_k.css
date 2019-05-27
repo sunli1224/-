@@ -1,0 +1,83 @@
+#comment_text_s{
+    resize: none;
+    width: 600px;
+    height: 150px;
+    /*position:absolute;*/
+    /*top: 10px;*/
+    /*left:300px;*/
+    font-size: 15px;
+    font-family: Aharoni;
+    border-color: dodgerblue;
+}
+
+.buttonone {
+    position: relative;
+    top: 0px;
+    left: 500px;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: dodgerblue;
+    border: none;
+    color: #FFFFFF;
+    /*text-align: center;*/
+    font-size: 15px;
+    padding: 20px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.buttonone span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.buttonone span:after {
+    content: '>>';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.buttonone:hover span {
+    padding-right: 25px;
+}
+
+.buttonone:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+#cotent
+{
+    font-size: 20px;
+}
+#time_check
+{
+    font-size: 10px;
+}
+#shouqi
+{
+    position: absolute;
+    right: 1px;
+}
+#huifu_text
+{
+    display: none;
+}
+#huifu_btn
+{
+    position: absolute;
+    right: 1px;
+    display: block;
+}
+/*#repeat_content*/
+/*{*/
+    /*position: absolute;*/
+    /*right: 100px;*/
+/*}*/

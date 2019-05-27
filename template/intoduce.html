@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}编程{% endblock %}
+{% block popover-content %}
+    <div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h1>
+                        世界上最流行的编程语言
+                        <small>编程语言的介绍</small>
+                    </h1>
+                </div>
+                <p class="lead">
+                    在科技驱动的世界，各行各业都在从根本上发展技术，业界领袖更是将其作为公司的重点。
+                    而这些技术的核心部分就是编程语言。国外一位技术爱好者 Ben 整理了一份最流行和最具影响力的编程语言清单，
+                    可以帮助开发者更好的预测 2018 年的编程语言发展趋势，同时，有针对性地选择和加强编程语言学习。
+                </p>
+                <p class="lead text-center">
+                    <img src="/static/images/bc1.png">
+                </p>
+                <p class="lead">
+                    这份清单的整理主要考虑了 TIOBE，Indeed.com 和 Github 上的数据指标：
+                </p>
+                       <p class="lead glyphicon-text-color">TIOBE 每月都会更新一次编程语言排行榜，整合世界各地的使用数据，发布最新的流行趋势。</p>
+                       <p class="lead glyphicon-text-color">Indeed.com 是世界最大的求职引擎， 我们能从中看到目前企业对编程工作的需求度，结合 TIOBE ，我们能很快查看排名前 50 位编程语言的职位数量。</p>
+                       <p class="lead glyphicon-text-color">Github 每年都会做一个年度报告，分享程序员社区的统计数据，我们引用他们的“Pull Requests Opened”作为语言流行度的另一个指标。</p>
+                <p class="lead text-danger">最流行的编程语言</p>
+                <p class="lead">
+                    <strong>TIOBE 数据</strong>
+                </p>
+                <p class="text-center">
+                    <img src="/static/images/bc2.png">
+                </p>
+                <p class="lead">
+                    上图数据来自 TIOBE 排行榜，显示了截至 2017 年 12 月，最流行的 20 种编程语言。
+                    百分比代表每种语言所具有的“市场份额”。
+                    Java、C/C++ 虽然出现过好几次下降的趋势，但是一直稳居前三的位置，市场份额比较高。
+                    Python 在 2017 年受到比较广泛的关注，
+                    市场份额较之前几年有了非常大的提升。关于 TIOBE 排名的依据，你可以查看这里。
+                </p>
+                <p class="lead text-danger">编程语言之最及其流行原因分析</p>
+                <P class="lead">
+                    <strong>Java 独占鳌头</strong>
+                </P>
+                <p class="lead">
+                    根据 TIOBE 的数据，Java 自 90 年代中期创建以来，一直是最受欢迎的语言 。
+                世界上许多大型的公司都使用 Java 来构建桌面应用程序和后端 Web 系统。
+                    Java 受欢迎的因素很多，总结起来主要有以下几点：
+                </p>
+                <p class="lead glyphicon-text-color">可移植性：由于与平台无关的 Java 虚拟机（JVM），Java 几乎可以在所有系统上运行。 Java 也是最流行的 Android 语言，所以绝大多数的 Android 应用程序都是用 Java 构建的。</p>
+                <p class="lead glyphicon-text-color">可扩展性：由于 Java 是一种静态类型的语言，所以它的维护速度更快，更易于维护，而且还具有向后兼容性，这意味着旧版本的语言即使在新版本发布后也能够完美运行。 对于那些每次出现新版本时都会担心重写代码的企业来说，这简直是福音。</p>
+                <p class="lead glyphicon-text-color">大型社区：Java 拥有庞大的用户群，Stack Overflow 、开源中国和 GitHub 等大型社区的存在，使得 Java 开发人员遇到任何问题都能很快的找到解决方案。加上它的可移植性，在很长一段时间内，它都会被广泛使用。</p>
+                <p class="lead">
+                    <strong>C 成为 2017 年度编程语言</strong>
+                </p>
+                <p class="lead">C 是最古老，最受欢迎的编程语言之一，被包括微软，苹果，Linux 和甲骨文在内的互联网巨头使用。
+                    同时，C 语言也是汽车，电子和其他设备中嵌入式系统最流行的语言。
+                    我们今天接触几乎所有东西东西，如，手机和闹钟，都能看到 C 的影子。
+                </p>
+                <p class="lead text-primary">为什么今天仍然是流行的编程语言？</p>
+                <p class="lead glyphicon-text-color">首先，它本质上是一种便携式汇编语言。它几乎适用于所有的系统，并且可以运行在尽可能低的机器上。</p>
+                <p class="lead glyphicon-text-color">C 还具有完全符合操作系统和嵌入式系统（如汽车仪表板）的特性。由于其相对较小的运行时，C 能很好地保持这些系统的精益。</p>
+                <p class="lead glyphicon-text-color">任何程序员都将从学习 C 语言中受益。许多在线编写和共享的算法都是在 C 中完成的。它本质上是编程语言的“通用语言”。
+                    像 C++ 和 C＃这样的 C 类衍生品也是最受欢迎的 5 种语言之一，这同样说明了 C 语言在今天仍然具有的影响力。
+                </p>
+                <p class="lead">
+                    <strong>Python 呈现上升趋势</strong>
+                </p>
+               <p class="lead">
+                   在过去 15 年的时间里，Python 一直呈现稳步上升的趋势，
+                   终于在前几年进入了 TIOBE 排行榜的前 5 名。2017 年，受到人工智能、机器学习、大数据等前沿科技的影响，
+                   Python 一举超越 C# 成了 TIOBE 的第 4 名。而且，
+                   网络安全也是我们当今时代非常重要的一个课题，而它也受到 Python 的驱动。
+                   Python 简单易学。 它现在是大学里最受欢迎的入门语言，也是有经验的开发者的第二或第三语言。
+                </p>
+                <p class="lead">
+                    <strong>JavaScript 占主导地位</strong>
+                </p>
+                <p class="lead">
+                    由于无处不在的浏览器，JavaScript 也成为了世界上最流行的编程语言之一
+                    ，在 GitHub 上的 Pull Request 排名第一。
+                    在新兴语言层出不穷的今天，JavaScript 有自己的优势，并将继续在网络上发挥重要作用。
+                    JavaScript 允许开发人员向网页添加交互式效果，它经常与 HTML 一起工作，
+                    但是现在使用 JavaScript 完全构建 Web 应用程序也变得越来越普遍。 由于其简单性和速度，
+                    越来越多的初创公司和技术企业开始通过 Node.js 框架在后端使用 JavaScript。
+                </p>
+                <p class="lead">
+                    <strong>Ruby：初创公司的最爱></strong>
+                </p>
+                <p class="lead">Ruby 是科技初创公司最受欢迎的语言之一。
+                    许多硅谷公司就是建立在 Ruby 上，包括 Airbnb，Twitch，GitHub 和 Twitter。
+                    Ruby on Rails 是一个运行 Ruby 的完整的 Web 应用程序框架，它的受欢迎程度也在提升。
+                </p>
+
+                <div class="clearfix col-md-12">
+            <img src="/static/images/py1.png" width="1100px">
+        </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

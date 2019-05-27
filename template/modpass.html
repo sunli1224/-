@@ -1,0 +1,91 @@
+{% extends 'baseone.html' %}
+{% load staticfiles %}
+{% block title %}login{% endblock %}
+{% block popover-content %}
+    <link rel="stylesheet" href="{% static 'css/modpass.css' %}">
+    <script>
+    function email_send() {
+var xmlhttp;
+if (window.XMLHttpRequest) {
+    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+    xmlhttp = new XMLHttpRequest();
+                  }
+     else {
+                      // IE6, IE5 浏览器执行代码
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+        var emails = document.getElementById("email").value;
+        if (emails !== "") {
+            xmlhttp.open("POST", "/email_ff/", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            var strss = "email=" + emails;
+            xmlhttp.send(strss);
+
+            settime(document.getElementById("btn_send"))
+        }
+        else {
+            document.getElementById("tip").style.color="red";
+            document.getElementById("tip").innerHTML = "请填写邮箱!"
+        }
+
+}
+var countdown=60;
+function settime(val) {
+
+        if (countdown === 0) {
+            val.removeAttribute("disabled");
+            val.value = "免费获取验证码";
+            countdown = 60;
+            return;
+        } else {
+            val.setAttribute("disabled", true);
+            val.value = "重新发送(" + countdown + ")";
+            countdown--;
+        }
+        setTimeout(function () {
+            settime(val)
+        }, 1000)
+}
+    </script>
+    <body></body>
+    <div id="contain">
+    <div id="i_title">
+        <h2><b>修改密码</b></h2>
+    </div>
+    <form method="post" action="/modpass/">
+    <div id="user_name">
+        <input type="text" id="user" name="user" placeholder="用户名" required="required">
+    </div>
+    <div id="new_pass">
+        <input type="password" id="pass" name="pass" placeholder="新密码" required="required">
+    </div>
+    <div id="new_email">
+        <input type="text" id="email" name="email" placeholder="请输入注册邮箱" required="required">
+        <input id="btn_send" type="button" onclick="email_send()" value="免费获取验证码">
+    </div>
+    <div id="email_pass">
+        <input type="text" id="email_p" name="email_p" placeholder="验证码">
+    </div>
+
+    <div id="reset">
+        <button id="btn_reset">重置</button>
+    </div>
+
+    <div id="login">
+        <button id="btn_login"> 修改密码</button>
+    </div>
+    </form>
+
+        <div id="message">
+            {% if message %}
+                <div id="mess" class="alert alert-warning">{{  message }}</div>
+            {% endif %}
+        <p id="tip"></p>
+        </div>
+
+    <div id="title_main">
+        <h2 id="font_main">BBLIKE BLOG 学习平台</h2>
+    </div>
+</div>
+{% endblock %}

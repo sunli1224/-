@@ -1,0 +1,17 @@
+{% extends 'baseone.html' %}
+{% load staticfiles %}
+{% block title %}login{% endblock %}
+{% block popover-content %}
+    <link rel="stylesheet" href="{% static 'css/error.css' %}">
+<div id="font_three">
+    <h1>你已经到了无人境地</h1>
+</div>
+<div id="find">
+    <div id="font_one">
+        <h1>404</h1>
+    </div>
+    <div id="font_two">
+        <h1>NOT FOUND</h1>
+    </div>
+</div>
+{% endblock %}

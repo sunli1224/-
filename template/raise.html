@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}raise{% endblock %}
+{% block popover-content %}
+    {% load staticfiles %}
+<script src="{% static 'js/raise.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<div class="container">
+<div class="row">
+    <div class="col-sm-10">
+    <h2>赞助</h2>
+      <p>如果您认为本网站的教程内容还不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨赞助我一下，让我继续有动力写下高质量的教程</p>
+        <hr>
+      <br>
+        <h2>赞助方式有两种</h2>
+        <p>微信支付</p>
+        <p>支付宝支付</p>
+        <hr>
+        <h2>赞助方式一</h2>
+        <p>绝对赤裸裸的金钱赞助：如果你有微信，请打开微信，使用“扫一扫”付款</p>
+        <p>目前一共有19元，29元，39元，59元，99元共5档。</p>
+        <p>请闭上眼睛随意选择</p>
+        <button type="button" onclick="Imgone()">￥19</button>
+        <button type="button" onclick="Imgtwo()">￥29</button>
+        <button type="button" onclick="Imgthree()">Y39</button>
+        <button type="button" onclick="Imgfour()">￥59</button>
+        <button type="button" onclick="Imgfive()">￥99</button>
+        <img src="/static/images/2.PNG">
+        <div>
+            <img src="/static/images/wx19.png" id="nImgone">
+            <img src="/static/images/wx.png">
+        </div>
+
+        <hr>
+        <h2>赞助方式二</h2>
+        <p>绝对赤裸裸的金钱赞助：如果你有手机支付宝，请打开支付宝App，使用“扫一扫”付款</p>
+        <p>目前一共有19元，29元，39元，59元，99元共5档。</p>
+        <p>请闭上眼睛随意选择</p>
+        <button type="button" onclick="nextImgone()">￥19</button>
+        <button type="button" onclick=" nextImgtwo()" >￥29</button>
+        <button type="button" onclick=" nextImgthree()">￥39</button>
+        <button type="button" onclick=" nextImgfour()">￥59</button>
+        <button type="button" onclick=" nextImgfive()">￥99</button>
+        <img src="/static/images/2.PNG">
+        <div>
+        <img src="/static/images/z19.png" id="nImg" >
+            <img src="/static/images/zfb.png">
+        </div>
+
+        <hr>
+    </div>
+    <div class="col-sm-2">
+       <h2>关于作者</h2>
+        <img src="/static/images/4.png" class="img-circle" width="60" height="60">
+
+    </div>
+    <div class="col-sm-2">
+        <a href="https://weibo.com/6087210865/profile?rightmod=1&wvr=6&mod=personinfo"><h4 align="left">孙力</h4></a>
+        <h5 align="left">安徽 芜湖</h5><i class="fa fa-weibo" style="font-size: 30px;color: red"></i>
+        <a href="https://weibo.com/6087210865/profile?rightmod=1&wvr=6&mod=personinfo" ><button type="button">请加关注</button></a>
+    </div>
+</div>
+</div>
+{% endblock %}

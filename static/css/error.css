@@ -1,0 +1,31 @@
+#find{
+    /*border: red solid 1px;*/
+    width: 300px;
+    height: 300px;
+    position: relative;
+    left: 550px;
+    top: 200px;
+}
+#font_one{
+    position: relative;
+    left: 140px;
+    top: 50px;
+}
+#font_two{
+    position: relative;
+    left: 60px;
+    top: 30px;
+}
+h1{
+    font-size: 50px;
+    font-family: "Angsana New";
+    color: darkgrey;
+}
+#font_three{
+    padding: 10px;
+    width: 60px;
+    height: 690px;
+    /*border: red solid 1px;*/
+    position: fixed;
+    top: 100px;
+}

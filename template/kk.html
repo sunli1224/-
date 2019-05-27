@@ -1,0 +1,45 @@
+{% extends 'baseone.html' %}
+{% block title %}JavaScript{% endblock %}
+{% block popover-content %}
+    {% load staticfiles %}
+{#    {% csrf_token %}#}
+     <link href="{% static 'css/tree.css' %}" rel="stylesheet">
+     <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/treescroll.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+    <body style="background-image: url({% static 'images/back1.png' %});" >
+     <h1>Python教程</h1>
+<div class="tree col-sm-8 " style="width: 400px;">
+    {% for item in father_mulu  %}
+            <ul>
+                <li>
+                    <div class="close_menu"><span></span><a href="{% url "Python" Python=item.title %}"><h4>{{ item.title }}</h4></a></div>
+                    {% for kk in son_mulu %}
+                        {% if kk.article_id == item.id %}
+                    <ul>
+                        <li>
+                            <div><span></span><a href="{% url "Python" Python=kk.title %}"><h4>{{ kk.title }}</h4></a></div>
+                        </li>
+                    </ul>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+            </ul>
+    {% endfor %}
+</div>
+<div class="col-md-8 col-md-offset-1 well sidebar-nav" style="width: 900px;height: 3500px">
+<h1>{{ teach_url.title }}</h1>
+    <h4>作者:<span class="label label-primary">孙力</span>&nbsp;&nbsp;阅读量:<span class="label label-warning">{{ teach_url.readcount }}</span></h4>
+<hr>
+    <div>{{ teach_url.text|safe }}</div>
+<div>
+    {% if teach_url.ordernum == 1 %}
+    <a href="{%  url "kk" kk=teach_url.title %}">下一页</a>
+    {% endif %}
+     {% if teach_url.ordernum > 1 %}
+      <a href="{%  url "up" up=teach_url.title %}">上一页</a>
+      <a href="{%  url "kk" kk=teach_url.title %}">下一页</a>
+     {% endif %}
+</div>
+</div>
+{% endblock %}
